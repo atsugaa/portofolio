@@ -14,53 +14,111 @@ const displayedProjects = featuredOnly
 ---
 
 <div class="relative">
-
-  <div
-    id="project-carousel"
-    class="overflow-hidden"
-  >
-    <div
-      id="project-track"
-      class="flex transition-transform duration-500 ease-out"
-    >
-      {displayedProjects.map((project) => (
-        <div class="w-full shrink-0 px-0.5">
-          <ProjectCard project={project} />
+  {displayedProjects.length > 0 ? (
+    <>
+      <!-- Carousel -->
+      <div id="project-carousel" class="overflow-hidden">
+        <div
+          id="project-track"
+          class="flex transition-transform duration-500 ease-out"
+        >
+          {displayedProjects.map((project) => (
+            <div class="w-full shrink-0 px-0.5">
+              <ProjectCard project={project} />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
+      </div>
 
-  <div class="mt-5 flex items-center justify-between">
+      <!-- Carousel Controls -->
+      <div class="mt-7 flex items-center justify-between">
+        <!-- Previous -->
+        <button
+          id="project-prev"
+          type="button"
+          aria-label="Proyek sebelumnya"
+          class="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-[var(--primary)]/40 hover:bg-[var(--primary)] hover:text-white hover:shadow-md disabled:translate-x-0 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[var(--border)] disabled:hover:bg-[var(--surface)] disabled:hover:text-[var(--muted)] disabled:hover:shadow-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+            aria-hidden="true"
+          >
+            <path
+              d="M12.5 4.5L7 10L12.5 15.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
 
-    <button
-      id="project-prev"
-      type="button"
-      aria-label="Proyek sebelumnya"
-      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] transition hover:bg-[var(--border)] disabled:cursor-not-allowed disabled:opacity-30"
-    >
-      ←
-    </button>
+        <!-- Pagination -->
+        <div class="flex flex-col items-center gap-2">
+          <!-- Dots -->
+          <div
+            id="project-dots"
+            class="flex items-center gap-1.5"
+            aria-label="Navigasi proyek"
+          >
+            {displayedProjects.map((_, index) => (
+              <button
+                type="button"
+                data-index={index}
+                aria-label={`Lihat proyek ${index + 1}`}
+                aria-current={index === 0 ? "true" : "false"}
+                class={`project-dot h-1.5 rounded-full transition-all duration-300 ${
+                  index === 0
+                    ? "w-6 bg-[var(--primary)]"
+                    : "w-1.5 bg-[var(--border)] hover:bg-[var(--muted)]"
+                }`}
+              ></button>
+            ))}
+          </div>
 
-    <span
-      id="project-indicator"
-      class="text-xs font-medium text-[var(--muted)]"
-      aria-live="polite"
-    >
-      1 / {displayedProjects.length}
-    </span>
+          <!-- Counter -->
+          <span
+            id="project-indicator"
+            class="text-[11px] font-medium tracking-wide text-[var(--muted)]"
+            aria-live="polite"
+          >
+            01 / {String(displayedProjects.length).padStart(2, "0")}
+          </span>
+        </div>
 
-    <button
-      id="project-next"
-      type="button"
-      aria-label="Proyek berikutnya"
-      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] transition hover:bg-[var(--border)] disabled:cursor-not-allowed disabled:opacity-30"
-    >
-      →
-    </button>
-
-  </div>
-
+        <!-- Next -->
+        <button
+          id="project-next"
+          type="button"
+          aria-label="Proyek berikutnya"
+          class="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] shadow-sm transition-all duration-200 hover:translate-x-0.5 hover:border-[var(--primary)]/40 hover:bg-[var(--primary)] hover:text-white hover:shadow-md disabled:translate-x-0 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[var(--border)] disabled:hover:bg-[var(--surface)] disabled:hover:text-[var(--muted)] disabled:hover:shadow-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden="true"
+          >
+            <path
+              d="M7.5 4.5L13 10L7.5 15.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </>
+  ) : (
+    <p class="text-sm text-[var(--muted)]">
+      Belum ada proyek yang ditampilkan.
+    </p>
+  )}
 </div>
 
 <script>
@@ -68,6 +126,7 @@ const displayedProjects = featuredOnly
   const prev = document.getElementById("project-prev");
   const next = document.getElementById("project-next");
   const indicator = document.getElementById("project-indicator");
+  const dots = document.querySelectorAll<HTMLButtonElement>(".project-dot");
 
   if (track && prev && next && indicator) {
     const total = track.children.length;
@@ -76,10 +135,22 @@ const displayedProjects = featuredOnly
     function update() {
       track.style.transform = `translateX(-${current * 100}%)`;
 
-      indicator.textContent = `${current + 1} / ${total}`;
+      indicator.textContent = `${String(current + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
 
       prev.disabled = current === 0;
       next.disabled = current === total - 1;
+
+      dots.forEach((dot, index) => {
+        const active = index === current;
+
+        dot.classList.toggle("w-6", active);
+        dot.classList.toggle("bg-[var(--primary)]", active);
+
+        dot.classList.toggle("w-1.5", !active);
+        dot.classList.toggle("bg-[var(--border)]", !active);
+
+        dot.setAttribute("aria-current", active ? "true" : "false");
+      });
     }
 
     prev.addEventListener("click", () => {
@@ -94,6 +165,17 @@ const displayedProjects = featuredOnly
         current++;
         update();
       }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = Number(dot.dataset.index);
+
+        if (!Number.isNaN(index)) {
+          current = index;
+          update();
+        }
+      });
     });
 
     update();

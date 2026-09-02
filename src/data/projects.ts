@@ -19,8 +19,16 @@ export const projects: Project[] = [
       "/projects/semantic-search/2.webp",
     ],
     featured: true,
-    github: "https://github.com/example/semantic-search",
-    demo: "https://example-semantic-search.hf.space",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/semantic-search",
+      },
+      {
+        type: "huggingface",
+        url: "https://example-semantic-search.hf.space",
+      },
+    ],
     year: 2026,
   },
 
@@ -41,8 +49,16 @@ export const projects: Project[] = [
       "/projects/unity-game/2.webp",
     ],
     featured: true,
-    github: "https://github.com/example/unity-game",
-    video: "https://youtube.com/watch?v=example",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/unity-game",
+      },
+      {
+        type: "gameplay",
+        url: "https://youtube.com/watch?v=example",
+      },
+    ],
     year: 2025,
   },
 
@@ -59,8 +75,16 @@ export const projects: Project[] = [
     ],
     image: "/projects/cpp-game.webp",
     featured: true,
-    github: "https://github.com/example/cpp-game",
-    video: "https://youtube.com/watch?v=example",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/cpp-game",
+      },
+      {
+        type: "gameplay",
+        url: "https://youtube.com/watch?v=example",
+      },
+    ],
     year: 2025,
   },
 
@@ -77,7 +101,12 @@ export const projects: Project[] = [
     ],
     image: "/projects/academic-system.webp",
     featured: true,
-    github: "https://github.com/example/academic-system",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/academic-system",
+      },
+    ],
     year: 2025,
   },
 
@@ -94,8 +123,16 @@ export const projects: Project[] = [
     ],
     image: "/projects/react-dashboard.webp",
     featured: true,
-    github: "https://github.com/example/react-dashboard",
-    demo: "https://example-dashboard.com",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/react-dashboard",
+      },
+      {
+        type: "demo",
+        url: "https://example-dashboard.com",
+      },
+    ],
     year: 2024,
   },
 
@@ -111,7 +148,12 @@ export const projects: Project[] = [
     ],
     image: "/projects/flutter-app.webp",
     featured: true,
-    github: "https://github.com/example/flutter-app",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/example/flutter-app",
+      },
+    ],
     year: 2024,
   },
 ];

@@ -4,12 +4,8 @@ import { skills } from "../data/skills";
 ---
 
 <div class="relative">
-
   <!-- Skill Carousel -->
-  <div
-    id="skill-carousel"
-    class="overflow-hidden"
-  >
+  <div id="skill-carousel" class="overflow-hidden">
     <div
       id="skill-track"
       class="flex transition-transform duration-500 ease-out"
@@ -22,62 +18,125 @@ import { skills } from "../data/skills";
     </div>
   </div>
 
-
   <!-- Navigation -->
-  <div class="mt-5 flex items-center justify-between">
-
+  <div class="mt-7 flex items-center justify-between">
+    <!-- Previous -->
     <button
       id="skill-prev"
       type="button"
       aria-label="Keahlian sebelumnya"
-      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm transition hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] disabled:cursor-not-allowed disabled:opacity-30"
+      class="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] shadow-sm transition-all duration-200 hover:-translate-x-0.5 hover:border-[var(--primary)]/40 hover:bg-[var(--primary)] hover:text-white hover:shadow-md disabled:translate-x-0 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[var(--border)] disabled:hover:bg-[var(--surface)] disabled:hover:text-[var(--muted)] disabled:hover:shadow-sm"
     >
-      ←
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="none"
+        class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+        aria-hidden="true"
+      >
+        <path
+          d="M12.5 4.5L7 10L12.5 15.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </button>
 
+    <!-- Pagination -->
+    <div class="flex flex-col items-center gap-2">
+      <!-- Dots -->
+      <div
+        id="skill-dots"
+        class="flex items-center gap-1.5"
+        aria-label="Navigasi keahlian"
+      >
+        {skills.map((_, index) => (
+          <button
+            type="button"
+            data-index={index}
+            aria-label={`Lihat keahlian ${index + 1}`}
+            aria-current={index === 0 ? "true" : "false"}
+            class={`skill-dot h-1.5 rounded-full transition-all duration-300 ${
+              index === 0
+                ? "w-6 bg-[var(--primary)]"
+                : "w-1.5 bg-[var(--border)] hover:bg-[var(--muted)]"
+            }`}
+          ></button>
+        ))}
+      </div>
 
-    <span
-      id="skill-indicator"
-      class="text-xs font-medium text-[var(--muted)]"
-      aria-live="polite"
-    >
-      1 / {skills.length}
-    </span>
+      <!-- Counter -->
+      <span
+        id="skill-indicator"
+        class="text-[11px] font-medium tracking-wide text-[var(--muted)]"
+        aria-live="polite"
+      >
+        01 / {String(skills.length).padStart(2, "0")}
+      </span>
+    </div>
 
-
+    <!-- Next -->
     <button
       id="skill-next"
       type="button"
       aria-label="Keahlian berikutnya"
-      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm transition hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] disabled:cursor-not-allowed disabled:opacity-30"
+      class="group flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] shadow-sm transition-all duration-200 hover:translate-x-0.5 hover:border-[var(--primary)]/40 hover:bg-[var(--primary)] hover:text-white hover:shadow-md disabled:translate-x-0 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[var(--border)] disabled:hover:bg-[var(--surface)] disabled:hover:text-[var(--muted)] disabled:hover:shadow-sm"
     >
-      →
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="none"
+        class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+        aria-hidden="true"
+      >
+        <path
+          d="M7.5 4.5L13 10L7.5 15.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </button>
-
   </div>
-
 </div>
-
 
 <script>
   const track = document.getElementById("skill-track");
   const prev = document.getElementById("skill-prev");
   const next = document.getElementById("skill-next");
   const indicator = document.getElementById("skill-indicator");
+  const dots = document.querySelectorAll<HTMLButtonElement>(".skill-dot");
 
   if (track && prev && next && indicator) {
     const total = track.children.length;
     let current = 0;
 
     function update() {
-      track.style.transform =
-        `translateX(-${current * 100}%)`;
+      track.style.transform = `translateX(-${current * 100}%)`;
 
       indicator.textContent =
-        `${current + 1} / ${total}`;
+        `${String(current + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
 
       prev.disabled = current === 0;
       next.disabled = current === total - 1;
+
+      dots.forEach((dot, index) => {
+        const active = index === current;
+
+        dot.classList.toggle("w-6", active);
+        dot.classList.toggle("bg-[var(--primary)]", active);
+
+        dot.classList.toggle("w-1.5", !active);
+        dot.classList.toggle("bg-[var(--border)]", !active);
+
+        dot.setAttribute(
+          "aria-current",
+          active ? "true" : "false"
+        );
+      });
     }
 
     prev.addEventListener("click", () => {
@@ -92,6 +151,17 @@ import { skills } from "../data/skills";
         current++;
         update();
       }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = Number(dot.dataset.index);
+
+        if (!Number.isNaN(index)) {
+          current = index;
+          update();
+        }
+      });
     });
 
     update();
