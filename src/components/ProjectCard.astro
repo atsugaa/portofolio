@@ -1,0 +1,108 @@
+---
+import type { Project } from "../types";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/30 hover:shadow-xl md:min-h-[390px] md:flex-row"
+>
+  <!-- Project Image -->
+  {project.image && (
+    <div
+      class="relative aspect-video w-full shrink-0 overflow-hidden bg-[var(--border)] md:aspect-auto md:w-[48%]"
+    >
+      <img
+        src={project.image}
+        alt={project.title}
+        loading="lazy"
+        class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+      />
+    </div>
+  )}
+
+  <!-- Project Information -->
+  <div
+    class="flex min-w-0 flex-1 flex-col justify-center p-6 sm:p-8 md:p-10"
+  >
+    <!-- Category & Year -->
+    <div class="flex items-center justify-between gap-4">
+      <span
+        class="text-xs font-bold uppercase tracking-[0.1em] text-[var(--primary)]"
+      >
+        {project.category}
+      </span>
+
+      {project.year && (
+        <span class="shrink-0 text-xs text-[var(--muted)]">
+          {project.year}
+        </span>
+      )}
+    </div>
+
+    <!-- Title -->
+    <h3
+      class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
+    >
+      {project.title}
+    </h3>
+
+    <!-- Description -->
+    <p
+      class="mt-4 max-w-xl text-sm leading-7 text-[var(--muted)] sm:text-base"
+    >
+      {project.description}
+    </p>
+
+    <!-- Technologies -->
+    <div class="mt-6 flex flex-wrap gap-2">
+      {project.technologies.map((technology) => (
+        <span
+          class="rounded-full bg-[var(--primary)]/8 px-3 py-1.5 text-xs font-medium text-[var(--primary)]"
+        >
+          {technology}
+        </span>
+      ))}
+    </div>
+
+    <!-- Links -->
+    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold transition hover:text-[var(--primary)]"
+        >
+          GitHub ↗
+        </a>
+      )}
+
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold transition hover:text-[var(--primary)]"
+        >
+          Demo ↗
+        </a>
+      )}
+
+      {project.video && (
+        <a
+          href={project.video}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold transition hover:text-[var(--primary)]"
+        >
+          Gameplay ↗
+        </a>
+      )}
+    </div>
+  </div>
+</article>

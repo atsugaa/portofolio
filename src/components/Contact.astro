@@ -1,0 +1,56 @@
+---
+import { profile } from "../data/profile";
+import { social } from "../data/social";
+---
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+
+      <p class="section-label">
+        Kontak
+      </p>
+
+      <h2 class="section-title mt-3">
+        Mari Terhubung
+      </h2>
+
+      <p
+        class="mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg"
+      >
+        Terbuka untuk kesempatan kerja, kolaborasi, maupun diskusi
+        mengenai pengembangan perangkat lunak dan teknologi.
+      </p>
+
+      <div class="mt-8">
+        <a
+          href={`mailto:${profile.email}`}
+          class="button button-primary"
+        >
+          Hubungi Saya
+        </a>
+      </div>
+
+      <div class="mt-8 flex items-center justify-center gap-7">
+        {social.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-[var(--muted)] transition hover:text-[var(--primary)]"
+          >
+            {item.name}
+            <span aria-hidden="true"> ↗</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 border-t border-[var(--border)] pt-6">
+        <p class="text-xs text-[var(--muted)]">
+          © {new Date().getFullYear()} {profile.name}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+import SkillGroup from "./SkillGroup.astro";
+import { skills } from "../data/skills";
+---
+
+<div class="relative">
+
+  <!-- Skill Carousel -->
+  <div
+    id="skill-carousel"
+    class="overflow-hidden"
+  >
+    <div
+      id="skill-track"
+      class="flex transition-transform duration-500 ease-out"
+    >
+      {skills.map((skill) => (
+        <div class="w-full shrink-0 px-0.5">
+          <SkillGroup skill={skill} />
+        </div>
+      ))}
+    </div>
+  </div>
+
+
+  <!-- Navigation -->
+  <div class="mt-5 flex items-center justify-between">
+
+    <button
+      id="skill-prev"
+      type="button"
+      aria-label="Keahlian sebelumnya"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm transition hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      ←
+    </button>
+
+
+    <span
+      id="skill-indicator"
+      class="text-xs font-medium text-[var(--muted)]"
+      aria-live="polite"
+    >
+      1 / {skills.length}
+    </span>
+
+
+    <button
+      id="skill-next"
+      type="button"
+      aria-label="Keahlian berikutnya"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-sm transition hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      →
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+  const track = document.getElementById("skill-track");
+  const prev = document.getElementById("skill-prev");
+  const next = document.getElementById("skill-next");
+  const indicator = document.getElementById("skill-indicator");
+
+  if (track && prev && next && indicator) {
+    const total = track.children.length;
+    let current = 0;
+
+    function update() {
+      track.style.transform =
+        `translateX(-${current * 100}%)`;
+
+      indicator.textContent =
+        `${current + 1} / ${total}`;
+
+      prev.disabled = current === 0;
+      next.disabled = current === total - 1;
+    }
+
+    prev.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        update();
+      }
+    });
+
+    next.addEventListener("click", () => {
+      if (current < total - 1) {
+        current++;
+        update();
+      }
+    });
+
+    update();
+  }
+</script>

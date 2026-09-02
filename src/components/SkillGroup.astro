@@ -1,0 +1,96 @@
+---
+import {
+  siPhp,
+  siLaravel,
+  siReact,
+  siJavascript,
+  siHtml5,
+  siCss,
+  siCplusplus,
+  siPython,
+  siDart,
+  siNeo4j,
+  siUnity,
+  siFlutter,
+} from "simple-icons/icons";
+
+interface SkillItem {
+  name: string;
+  icon?: string;
+}
+
+interface SkillGroup {
+  category: string;
+  items: SkillItem[];
+}
+
+interface Props {
+  skill: SkillGroup;
+}
+
+const { skill } = Astro.props;
+
+const iconMap: Record<string, any> = {
+  php: siPhp,
+  laravel: siLaravel,
+  react: siReact,
+  javascript: siJavascript,
+  html5: siHtml5,
+  css: siCss,
+  cplusplus: siCplusplus,
+  python: siPython,
+  dart: siDart,
+  neo4j: siNeo4j,
+  unity: siUnity,
+  flutter: siFlutter,
+};
+---
+
+<article
+  class="group flex min-h-[280px] flex-col justify-center rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-7 transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/30 hover:shadow-lg sm:p-10"
+>
+  <div class="max-w-4xl">
+
+    <p
+      class="text-xs font-bold uppercase tracking-[0.12em] text-[var(--primary)]"
+    >
+      Keahlian
+    </p>
+
+    <h3
+      class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+    >
+      {skill.category}
+    </h3>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+
+      {skill.items.map((item) => {
+        const icon = item.icon ? iconMap[item.icon] : null;
+
+        return (
+            <div
+            class="flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 transition duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40"
+            >
+            {icon && (
+                <svg
+                viewBox="0 0 24 24"
+                class="h-7 w-7 shrink-0"
+                fill={`#${icon.hex}`}
+                aria-hidden="true"
+                >
+                <path d={icon.path} />
+                </svg>
+            )}
+
+            <span class="text-sm font-medium">
+                {item.name}
+            </span>
+            </div>
+        );
+        })}
+
+    </div>
+
+  </div>
+</article>

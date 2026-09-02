@@ -1,0 +1,125 @@
+---
+import { profile } from "../data/profile";
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur-md">
+  <nav class="container flex h-16 items-center justify-between">
+
+    <a
+      href="/"
+      class="text-base font-bold tracking-tight"
+    >
+    </a>
+
+    <!-- Desktop -->
+    <div class="hidden items-center gap-7 text-sm md:flex">
+
+      <a
+        href="/#about"
+        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        Tentang
+      </a>
+
+      <a
+        href="/#projects"
+        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        Proyek
+      </a>
+
+      <a
+        href="/#skills"
+        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        Keahlian
+      </a>
+
+      <a
+        href="/#contact"
+        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        Kontak
+      </a>
+
+    </div>
+
+    <!-- Mobile -->
+    <button
+      id="menu-button"
+      type="button"
+      aria-label="Buka menu"
+      aria-expanded="false"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] md:hidden"
+    >
+      <span id="menu-icon">☰</span>
+    </button>
+
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-[var(--border)] bg-[var(--background)] md:hidden"
+  >
+    <div class="container flex flex-col py-4">
+
+      <a
+        href="/#about"
+        class="border-b border-[var(--border)] py-4 text-sm"
+      >
+        Tentang
+      </a>
+
+      <a
+        href="/#projects"
+        class="border-b border-[var(--border)] py-4 text-sm"
+      >
+        Proyek
+      </a>
+
+      <a
+        href="/#skills"
+        class="border-b border-[var(--border)] py-4 text-sm"
+      >
+        Keahlian
+      </a>
+
+      <a
+        href="/#contact"
+        class="py-4 text-sm"
+      >
+        Kontak
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById("menu-button");
+  const menu = document.getElementById("mobile-menu");
+  const icon = document.getElementById("menu-icon");
+
+  button?.addEventListener("click", () => {
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    button.setAttribute("aria-expanded", String(!isOpen));
+    menu?.classList.toggle("hidden");
+
+    if (icon) {
+      icon.textContent = isOpen ? "☰" : "×";
+    }
+  });
+
+  document.querySelectorAll("#mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu?.classList.add("hidden");
+      button?.setAttribute("aria-expanded", "false");
+
+      if (icon) {
+        icon.textContent = "☰";
+      }
+    });
+  });
+</script>

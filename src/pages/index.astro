@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import SkillGrid from "../components/SkillGrid.astro";
+import Contact from "../components/Contact.astro";
+import About from "../components/About.astro";
+---
+
+<Layout>
+  <Navbar />
+
+    <main>
+
+    <Hero />
+
+    <About />
+
+    <section id="projects" class="section">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">
+            Portfolio
+          </p>
+
+          <h2 class="section-title">
+            Proyek Pilihan
+          </h2>
+
+          <p class="section-description">
+            Beberapa proyek yang pernah saya kerjakan dalam
+            pengembangan perangkat lunak, game, dan sistem
+            berbasis data.
+          </p>
+        </div>
+
+        <ProjectGrid featuredOnly={true} />
+
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-label">
+            Keahlian
+          </p>
+
+          <h2 class="section-title">
+            Teknologi yang Saya Gunakan
+          </h2>
+
+          <p class="section-description">
+            Teknologi dan bidang yang pernah saya gunakan dalam
+            proyek perkuliahan, skripsi, maupun pengembangan aplikasi.
+          </p>
+        </div>
+
+        <SkillGrid />
+
+      </div>
+    </section>
+
+    <Contact />
+
+  </main>
+</Layout>

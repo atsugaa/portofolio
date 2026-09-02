@@ -1,0 +1,101 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { projects } from "../data/projects";
+
+interface Props {
+  featuredOnly?: boolean;
+}
+
+const { featuredOnly = false } = Astro.props;
+
+const displayedProjects = featuredOnly
+  ? projects.filter((project) => project.featured)
+  : projects;
+---
+
+<div class="relative">
+
+  <div
+    id="project-carousel"
+    class="overflow-hidden"
+  >
+    <div
+      id="project-track"
+      class="flex transition-transform duration-500 ease-out"
+    >
+      {displayedProjects.map((project) => (
+        <div class="w-full shrink-0 px-0.5">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-5 flex items-center justify-between">
+
+    <button
+      id="project-prev"
+      type="button"
+      aria-label="Proyek sebelumnya"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] transition hover:bg-[var(--border)] disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      ←
+    </button>
+
+    <span
+      id="project-indicator"
+      class="text-xs font-medium text-[var(--muted)]"
+      aria-live="polite"
+    >
+      1 / {displayedProjects.length}
+    </span>
+
+    <button
+      id="project-next"
+      type="button"
+      aria-label="Proyek berikutnya"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] transition hover:bg-[var(--border)] disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      →
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+  const track = document.getElementById("project-track");
+  const prev = document.getElementById("project-prev");
+  const next = document.getElementById("project-next");
+  const indicator = document.getElementById("project-indicator");
+
+  if (track && prev && next && indicator) {
+    const total = track.children.length;
+    let current = 0;
+
+    function update() {
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      indicator.textContent = `${current + 1} / ${total}`;
+
+      prev.disabled = current === 0;
+      next.disabled = current === total - 1;
+    }
+
+    prev.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        update();
+      }
+    });
+
+    next.addEventListener("click", () => {
+      if (current < total - 1) {
+        current++;
+        update();
+      }
+    });
+
+    update();
+  }
+</script>
