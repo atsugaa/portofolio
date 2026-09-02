@@ -1,59 +1,194 @@
----
-import { profile } from "../data/profile";
----
-
-<header class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur-md">
+<header
+  class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur-md"
+>
   <nav class="container flex h-16 items-center justify-between">
 
-    <a
-      href={`${import.meta.env.BASE_URL}/`}
-      class="text-base font-bold tracking-tight"
-    >
-    </a>
-
     <!-- Desktop -->
-    <div class="hidden items-center gap-7 text-sm md:flex">
+    <div class="hidden items-center gap-7 md:flex">
 
       <a
         href={`${import.meta.env.BASE_URL}/#about`}
-        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+        class="text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Tentang
       </a>
 
       <a
         href={`${import.meta.env.BASE_URL}/#projects`}
-        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+        class="text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Proyek
       </a>
 
       <a
         href={`${import.meta.env.BASE_URL}/#skills`}
-        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+        class="text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Keahlian
       </a>
 
       <a
         href={`${import.meta.env.BASE_URL}/#contact`}
-        class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
+        class="text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Kontak
       </a>
 
+      <!-- Theme Toggle -->
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Aktifkan dark mode"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition hover:border-[var(--primary)]/40 hover:text-[var(--foreground)]"
+      >
+        <!-- Moon -->
+        <svg
+          id="theme-icon-moon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12.79A9 9 0 1 1 11.21 3
+              7 7 0 0 0 21 12.79Z"
+          />
+        </svg>
+
+        <!-- Sun -->
+        <svg
+          id="theme-icon-sun"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="hidden h-5 w-5"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+
+          <path
+            stroke-linecap="round"
+            d="M12 2v2
+              M12 20v2
+              M4.93 4.93l1.41 1.41
+              M17.66 17.66l1.41 1.41
+              M2 12h2
+              M20 12h2
+              M4.93 19.07l1.41-1.41
+              M17.66 6.34l1.41-1.41"
+          />
+        </svg>
+      </button>
+
     </div>
 
-    <!-- Mobile -->
-    <button
-      id="menu-button"
-      type="button"
-      aria-label="Buka menu"
-      aria-expanded="false"
-      class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] md:hidden"
-    >
-      <span id="menu-icon">☰</span>
-    </button>
+    <!-- Mobile Actions -->
+    <div class="flex items-center gap-2 md:hidden">
+
+      <!-- Theme Toggle -->
+      <button
+        id="theme-toggle-mobile"
+        type="button"
+        aria-label="Aktifkan dark mode"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        <!-- Moon -->
+        <svg
+          id="theme-icon-moon-mobile"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12.79A9 9 0 1 1 11.21 3
+              7 7 0 0 0 21 12.79Z"
+          />
+        </svg>
+
+        <!-- Sun -->
+        <svg
+          id="theme-icon-sun-mobile"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="hidden h-5 w-5"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+
+          <path
+            stroke-linecap="round"
+            d="M12 2v2
+              M12 20v2
+              M4.93 4.93l1.41 1.41
+              M17.66 17.66l1.41 1.41
+              M2 12h2
+              M20 12h2
+              M4.93 19.07l1.41-1.41
+              M17.66 6.34l1.41-1.41"
+          />
+        </svg>
+      </button>
+
+      <!-- Menu -->
+      <button
+        id="menu-button"
+        type="button"
+        aria-label="Buka menu"
+        aria-expanded="false"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition hover:text-[var(--foreground)]"
+      >
+        <!-- Menu Icon -->
+        <svg
+          id="menu-icon-open"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            d="M4 7h16M4 12h16M4 17h16"
+          />
+        </svg>
+
+        <!-- Close Icon -->
+        <svg
+          id="menu-icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="hidden h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            d="M6 6l12 12M18 6L6 18"
+          />
+        </svg>
+      </button>
+
+    </div>
 
   </nav>
 
@@ -97,29 +232,104 @@ import { profile } from "../data/profile";
 </header>
 
 <script>
-  const button = document.getElementById("menu-button");
-  const menu = document.getElementById("mobile-menu");
-  const icon = document.getElementById("menu-icon");
+  // --------------------------------
+  // Theme Toggle
+  // --------------------------------
 
-  button?.addEventListener("click", () => {
-    const isOpen = button.getAttribute("aria-expanded") === "true";
+  const themeButtons = [
+    document.getElementById("theme-toggle"),
+    document.getElementById("theme-toggle-mobile"),
+  ];
 
-    button.setAttribute("aria-expanded", String(!isOpen));
-    menu?.classList.toggle("hidden");
+  const moonIcons = [
+    document.getElementById("theme-icon-moon"),
+    document.getElementById("theme-icon-moon-mobile"),
+  ];
 
-    if (icon) {
-      icon.textContent = isOpen ? "☰" : "×";
-    }
-  });
+  const sunIcons = [
+    document.getElementById("theme-icon-sun"),
+    document.getElementById("theme-icon-sun-mobile"),
+  ];
 
-  document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu?.classList.add("hidden");
-      button?.setAttribute("aria-expanded", "false");
+  function updateThemeIcon() {
+    const isDark =
+      document.documentElement.dataset.theme === "dark";
 
-      if (icon) {
-        icon.textContent = "☰";
-      }
+    moonIcons.forEach((icon) => {
+      icon?.classList.toggle("hidden", isDark);
+    });
+
+    sunIcons.forEach((icon) => {
+      icon?.classList.toggle("hidden", !isDark);
+    });
+
+    themeButtons.forEach((button) => {
+      button?.setAttribute(
+        "aria-label",
+        isDark
+          ? "Aktifkan light mode"
+          : "Aktifkan dark mode"
+      );
+    });
+  }
+
+  themeButtons.forEach((button) => {
+    button?.addEventListener("click", () => {
+      const isDark =
+        document.documentElement.dataset.theme === "dark";
+
+      const theme = isDark ? "light" : "dark";
+
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem("theme", theme);
+
+      updateThemeIcon();
     });
   });
+
+  updateThemeIcon();
+
+
+  // --------------------------------
+  // Mobile Menu
+  // --------------------------------
+
+  const menuButton = document.getElementById("menu-button");
+  const menu = document.getElementById("mobile-menu");
+  const menuOpen = document.getElementById("menu-icon-open");
+  const menuClose = document.getElementById("menu-icon-close");
+
+  menuButton?.addEventListener("click", () => {
+    const isOpen =
+      menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
+    menu?.classList.toggle("hidden");
+
+    menuOpen?.classList.toggle("hidden", !isOpen);
+    menuClose?.classList.toggle("hidden", isOpen);
+  });
+
+
+  // Close mobile menu after navigation
+
+  document
+    .querySelectorAll("#mobile-menu a")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        menu?.classList.add("hidden");
+
+        menuButton?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuOpen?.classList.remove("hidden");
+        menuClose?.classList.add("hidden");
+      });
+    });
 </script>

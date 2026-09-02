@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: "Agusta — Portfolio",
+  title: "Agusta — Portofolio",
   description:
-    "Portfolio Agusta, fresh graduate Teknik Informatika.",
+    "Portofolio Agusta, fresh graduate Teknik Informatika.",
 
   theme: "default",
 
