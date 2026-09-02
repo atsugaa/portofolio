@@ -6,7 +6,7 @@ import { profile } from "../data/profile";
   <nav class="container flex h-16 items-center justify-between">
 
     <a
-      href="/"
+      href={`${import.meta.env.BASE_URL}/`}
       class="text-base font-bold tracking-tight"
     >
     </a>
@@ -15,28 +15,28 @@ import { profile } from "../data/profile";
     <div class="hidden items-center gap-7 text-sm md:flex">
 
       <a
-        href="/#about"
+        href={`${import.meta.env.BASE_URL}/#about`}
         class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Tentang
       </a>
 
       <a
-        href="/#projects"
+        href={`${import.meta.env.BASE_URL}/#projects`}
         class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Proyek
       </a>
 
       <a
-        href="/#skills"
+        href={`${import.meta.env.BASE_URL}/#skills`}
         class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Keahlian
       </a>
 
       <a
-        href="/#contact"
+        href={`${import.meta.env.BASE_URL}/#contact`}
         class="text-[var(--muted)] transition hover:text-[var(--foreground)]"
       >
         Kontak
@@ -65,28 +65,28 @@ import { profile } from "../data/profile";
     <div class="container flex flex-col py-4">
 
       <a
-        href="/#about"
+        href={`${import.meta.env.BASE_URL}/#about`}
         class="border-b border-[var(--border)] py-4 text-sm"
       >
         Tentang
       </a>
 
       <a
-        href="/#projects"
+        href={`${import.meta.env.BASE_URL}/#projects`}
         class="border-b border-[var(--border)] py-4 text-sm"
       >
         Proyek
       </a>
 
       <a
-        href="/#skills"
+        href={`${import.meta.env.BASE_URL}/#skills`}
         class="border-b border-[var(--border)] py-4 text-sm"
       >
         Keahlian
       </a>
 
       <a
-        href="/#contact"
+        href={`${import.meta.env.BASE_URL}/#contact`}
         class="py-4 text-sm"
       >
         Kontak
