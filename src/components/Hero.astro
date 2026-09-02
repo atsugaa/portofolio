@@ -71,7 +71,7 @@ import { profile } from "../data/profile";
             class="h-[88%] w-[88%] overflow-hidden rounded-full border-4 border-[var(--surface)] bg-[var(--surface)] shadow-2xl"
           >
             <img
-              src="/images/avatar.jpg"
+              src={`${import.meta.env.BASE_URL}images/avatar.jpg`}
               alt={`Avatar ${profile.name}`}
               class="h-full w-full object-cover"
             />
