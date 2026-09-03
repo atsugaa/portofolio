@@ -1,20 +1,20 @@
 export const profile = {
   name: "Agusta",
 
-  role: "Fresh Graduate Teknik Informatika",
+  role: "Software Developer",
 
   headline:
     "Mengembangkan perangkat lunak, game, aplikasi mobile, dan sistem berbasis data.",
 
   description:
-    "Lulusan Teknik Informatika dengan pengalaman mengembangkan berbagai proyek dalam bidang web development, game development, aplikasi mobile, serta pengolahan dan pencarian informasi berbasis data.",
+    "Fresh graduate Teknik Informatika dengan pengalaman mengembangkan berbagai proyek dalam bidang web development, game development, aplikasi mobile, serta pengolahan dan pencarian informasi berbasis data.",
 
   location: "Indonesia",
 
-  email: "email@example.com",
+  email: "kurniaagusta50@gmail.com",
 
   about:
-    "Saya merupakan lulusan Teknik Informatika yang memiliki ketertarikan pada pengembangan perangkat lunak dan penerapan teknologi untuk menyelesaikan berbagai permasalahan. Selama perkuliahan, saya mengembangkan berbagai proyek dalam bidang web, game, aplikasi mobile, serta sistem berbasis data. Saya terbiasa mempelajari teknologi baru, merancang solusi berdasarkan kebutuhan, dan mengembangkan aplikasi secara terstruktur.",
+    "Saya merupakan fresh graduate Teknik Informatika Universitas Trunodjoyo Madura yang memiliki ketertarikan pada pengembangan perangkat lunak dan penerapan teknologi untuk menyelesaikan berbagai permasalahan. Selama perkuliahan, saya mengembangkan berbagai proyek dalam bidang web, game, aplikasi mobile, serta sistem berbasis data. Saya terbiasa mempelajari teknologi baru, merancang solusi berdasarkan kebutuhan, dan mengembangkan aplikasi secara terstruktur.",
 
   education: {
     degree: "S1 Teknik Informatika",

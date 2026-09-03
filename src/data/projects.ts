@@ -3,15 +3,14 @@ import type { Project } from "../types";
 export const projects: Project[] = [
   {
     slug: "semantic-search",
-    title: "Semantic Search Dokumen Hukum",
+    title: "Semantic Search Dokumen Putusan Pengadilan",
     category: "Skripsi",
     description:
-      "Sistem pencarian semantik yang memanfaatkan pemrosesan bahasa alami dan Neo4j untuk menemukan informasi berdasarkan kemiripan makna.",
+      "Sistem pencarian semantik dokumen putusan yang memanfaatkan entitas knowledge graph untuk menemukan informasi berdasarkan makna kata.",
     technologies: [
       "Python",
-      "NLP",
+      "Flask",
       "Neo4j",
-      "Semantic Search",
     ],
     image: "/projects/semantic-search.webp",
     gallery: [
@@ -21,12 +20,8 @@ export const projects: Project[] = [
     featured: true,
     links: [
       {
-        type: "github",
-        url: "https://github.com/example/semantic-search",
-      },
-      {
         type: "huggingface",
-        url: "https://example-semantic-search.hf.space",
+        url: "https://huggingface.co/spaces/atsuga/search-engine",
       },
     ],
     year: 2026,
@@ -34,14 +29,13 @@ export const projects: Project[] = [
 
   {
     slug: "unity-adventure-game",
-    title: "Adventure Game",
+    title: "Pulau Tanpa Cahaya",
     category: "Proyek Mata Kuliah",
     description:
-      "Game adventure yang dikembangkan menggunakan Unity dan C# dengan berbagai mekanisme gameplay dan sistem interaksi.",
+      "Game adventure yang dikembangkan menggunakan Unity dan C# yang merupakan game petualangan berbasis 2D bergaya piksel dengan genre adventure-survival, di mana pemain harus menemukan jalan keluar sambil menghindari serangan monster di lingkungan yang minim cahaya.",
     technologies: [
       "Unity",
       "C#",
-      "Game Development",
     ],
     image: "/projects/unity-game.webp",
     gallery: [
@@ -52,26 +46,24 @@ export const projects: Project[] = [
     links: [
       {
         type: "github",
-        url: "https://github.com/example/unity-game",
+        url: "https://github.com/atsugaa/game",
       },
       {
         type: "gameplay",
-        url: "https://youtube.com/watch?v=example",
+        url: "https://youtu.be/jHtVG318oZQ",
       },
     ],
-    year: 2025,
+    year: 2024,
   },
 
   {
     slug: "cpp-platformer",
-    title: "2D Platformer",
+    title: "Ular Tangga",
     category: "Proyek Mata Kuliah",
     description:
-      "Game 2D berbasis C++ yang menerapkan konsep object-oriented programming, game loop, input handling, dan collision detection.",
+      "Game ular tangga 2D dan 3D berbasis C++ yang menerapkan konsep object-oriented programming, looping, dan vector.",
     technologies: [
       "C++",
-      "OOP",
-      "Game Development",
     ],
     image: "/projects/cpp-game.webp",
     featured: true,
@@ -80,57 +72,55 @@ export const projects: Project[] = [
         type: "github",
         url: "https://github.com/example/cpp-game",
       },
-      {
-        type: "gameplay",
-        url: "https://youtube.com/watch?v=example",
-      },
     ],
-    year: 2025,
+    year: 2024,
   },
 
   {
     slug: "laravel-information-system",
-    title: "Sistem Informasi Akademik",
+    title: "Prediksi Harga Emas",
     category: "Proyek Mata Kuliah",
     description:
-      "Aplikasi web untuk mengelola data akademik dengan fitur autentikasi, pengelolaan data, dan dashboard.",
+      "Sistem prediksi harga emas berdasarkan data historis harian dengan metode regresi linear menggunakan python dan flask.",
     technologies: [
-      "Laravel",
-      "PHP",
-      "MySQL",
+      "Python",
+      "Flask",
     ],
     image: "/projects/academic-system.webp",
     featured: true,
     links: [
       {
-        type: "github",
-        url: "https://github.com/example/academic-system",
+        type: "huggingface",
+        url: "https://huggingface.co/spaces/atsuga/emas",
       },
+      {
+        type: "demo",
+        url: "https://atsuga-emas.hf.space",
+      }
     ],
-    year: 2025,
+    year: 2024,
   },
 
   {
     slug: "react-dashboard",
-    title: "Interactive Dashboard",
-    category: "Personal Project",
+    title: "Pemetaan Kasus di Jawa Timur",
+    category: "Proyek Mata Kuliah",
     description:
-      "Dashboard interaktif berbasis React.js untuk menampilkan dan mengelola data secara dinamis.",
+      "Dashboard interaktif yang menampilkan insight dan peta persebaran kasus kejahatan di Jawa Timur berdasarkan dokumen putusan pengadilan.",
     technologies: [
-      "React.js",
-      "JavaScript",
-      "CSS",
+      "Python",
+      "Flask",
     ],
     image: "/projects/react-dashboard.webp",
     featured: true,
     links: [
       {
-        type: "github",
-        url: "https://github.com/example/react-dashboard",
+        type: "huggingface",
+        url: "https://huggingface.co/spaces/atsuga/map",
       },
       {
         type: "demo",
-        url: "https://example-dashboard.com",
+        url: "https://atsuga-map.hf.space/",
       },
     ],
     year: 2024,
@@ -138,13 +128,12 @@ export const projects: Project[] = [
 
   {
     slug: "flutter-mobile-app",
-    title: "Mobile Application",
+    title: "Evote",
     category: "Proyek Mata Kuliah",
     description:
-      "Aplikasi mobile sederhana yang dikembangkan menggunakan Flutter dan Dart.",
+      "Aplikasi mobile sederhana yang dikembangkan menggunakan Flutter",
     technologies: [
       "Flutter",
-      "Dart",
     ],
     image: "/projects/flutter-app.webp",
     featured: true,
@@ -154,6 +143,41 @@ export const projects: Project[] = [
         url: "https://github.com/example/flutter-app",
       },
     ],
-    year: 2024,
+    year: 2025,
   },
+
+  {
+    slug: "hardware-troubleshooting",
+    title: "To-Do List",
+    category: "Proyek Pribadi",
+    description:
+      "Proyek pribadi untuk mengembangkan website todo list menggunakan Laravel.",
+    technologies: [
+      "Laravel",
+      "PHP",
+    ],
+    image: "/projects/flutter-app.webp",
+    featured: true,
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/atsugaaa/todo-list",
+      },
+    ],
+    year: 2025,
+  },
+  {
+    slug: "react-website",
+    title: "Penilaian Akademik",
+    category: "Proyek Pribadi",
+    description:
+      "Website penilaian akademik sekolah yang dikembangkan menggunakan React.js sebagai frontend dan Laravel sebagai backend.",
+    technologies: [
+      "React.js",
+      "Laravel",
+    ],
+    image: "/projects/react-website.webp",
+    featured: true,
+    year: 2026,
+  }
 ];
