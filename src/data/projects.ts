@@ -128,10 +128,10 @@ export const projects: Project[] = [
 
   {
     slug: "flutter-mobile-app",
-    title: "Evote",
+    title: "ERP Mobile",
     category: "Proyek Mata Kuliah",
     description:
-      "Aplikasi mobile sederhana yang dikembangkan menggunakan Flutter",
+      "Aplikasi mobile keuangan perusahaan yang dikembangkan menggunakan Flutter",
     technologies: [
       "Flutter",
     ],
@@ -156,7 +156,7 @@ export const projects: Project[] = [
       "Laravel",
       "PHP",
     ],
-    image: "/projects/flutter-app.webp",
+    image: "/projects/todo.webp",
     featured: true,
     links: [
       {
