@@ -123,13 +123,13 @@ export const projects: Project[] = [
         url: "https://atsuga-map.hf.space/",
       },
     ],
-    year: 2024,
+    year: 2025,
   },
 
   {
     slug: "flutter-mobile-app",
     title: "ERP Mobile",
-    category: "Proyek Mata Kuliah",
+    category: "Magang",
     description:
       "Aplikasi mobile keuangan perusahaan yang dikembangkan menggunakan Flutter",
     technologies: [
@@ -137,13 +137,28 @@ export const projects: Project[] = [
     ],
     image: "/projects/flutter-app.webp",
     featured: true,
+    year: 2025,
+  },
+
+  {
+    slug: "laravel-ecommerce",
+    title: "E-Vote",
+    category: "Program Kreativitas Mahasiswa",
+    description:
+      "Website e-voting berbasis Laravel yang dikembangkan untuk memfasilitasi proses pemilihan secara online dengan fitur keamanan dan validasi suara.",
+    technologies: [
+      "Laravel",
+      "PHP",
+    ],
+    image: "/projects/laravel.webp",
+    featured: true,
     links: [
       {
         type: "github",
-        url: "https://github.com/example/flutter-app",
+        url: "https://github.com/atsugaa/evote",
       },
     ],
-    year: 2025,
+    year: 2024,
   },
 
   {
